@@ -1,0 +1,33 @@
+{
+<<<<<<< HEAD
+  "name": "projetos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.34.7"
+=======
+  "name": "m-grupo-backend",
+  "version": "1.0.0",
+  "description": "Backend de monitoramento concorrente e automação comercial do M GRUPO",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "keywords": [],
+  "author": "M GRUPO",
+  "license": "ISC",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#webpack-fix"
+>>>>>>> 46a1e68c1b6c9b595d928ccd6a232bd6096b731c
+  }
+}
