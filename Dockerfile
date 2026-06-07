@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Instalação de dependências essenciais de uma única vez
+# Instalação unificada e limpa de dependências
 RUN apt-get update && apt-get install -y \
     curl gnupg ca-certificates procps git chromium \
     libnss3 libatk-bridge2.0-0 libgtk-3-0 libxss1 libasound2 \
@@ -10,19 +10,17 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
-COPY package*.json ./
-COPY requirements.txt ./
+COPY package*.json requirements.txt ./
 
-# Limpa o cache do npm para economizar RAM durante o build
-RUN npm cache clean --force && npm install
-RUN pip install --no-cache-dir -r requirements.txt
+# Instalação única de pacotes
+RUN npm install && pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Permissões totais
+# Garante permissão na pasta de sessão
 RUN mkdir -p .wwebjs_auth && chmod -R 777 .wwebjs_auth
 
-# Inicializador
+# Inicializador eficiente
 RUN echo '#!/bin/sh\nnode bot.js &\nexec uvicorn main:app --host 0.0.0.0 --port 8000' > entrypoint.sh && chmod +x entrypoint.sh
 
 CMD ["./entrypoint.sh"]
