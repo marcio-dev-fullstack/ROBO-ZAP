@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "robo-zap-bot",
+      "script": "bot.js",
+      "cwd": "C:\\src\\ROBO-ZAP",
+      "interpreter": "C:\\Program Files\\nodejs\\node.exe",
+      "watch": false
+    },
+    {
+      "name": "robo-zap-api",
+      "script": "C:\\Windows\\py.exe",
+      "cwd": "C:\\src\\ROBO-ZAP",
+      "args": "-3.11 -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload",
+      "watch": false
+    }
+  ]
+}

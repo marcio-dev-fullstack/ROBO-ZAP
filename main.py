@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+from fastapi import FastAPI
+=======
+<<<<<<< HEAD
 from fastapi import FastAPI, HTTPException
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import os
@@ -20,7 +24,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+<<<<<<< HEAD
+STATUS_FILE = "bot_status.txt"
+QR_FILE = "qrcode_atual.txt"
+
+def read_bot_status():
+    if os.path.exists(STATUS_FILE):
+        with open(STATUS_FILE, "r", encoding="utf-8") as f:
+            return f.read().strip() or "unknown"
+    return "offline"
+
+# Rota Raiz (Health Check)
+=======
 # Rota Raiz (Health Check) para o Render saber que a API está online
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 @app.get("/")
 async def root():
     return {
@@ -29,12 +46,27 @@ async def root():
         "servicos": ["KM Projetos", "RAZGO Tecnologia", "MAZZ Cursos", "MR Treinamentos"]
     }
 
+<<<<<<< HEAD
+@app.get("/status")
+async def status():
+    return {
+        "status": "online",
+        "bot_status": read_bot_status()
+    }
+
+# 🚀 ROTA EXCLUSIVA /QR PARA GERAR E EXIBIR O CODIGO DO WHATSAPP COM SEGURANÇA
+@app.get("/qr", response_class=HTMLResponse)
+async def get_qr_code():
+    caminho_arquivo = QR_FILE
+
+=======
 # 🚀 ROTA EXCLUSIVA /QR PARA GERAR E EXIBIR O CODIGO DO WHATSAPP COM SEGURANÇA
 @app.get("/qr", response_class=HTMLResponse)
 async def get_qr_code():
     caminho_arquivo = "qrcode_atual.txt"
     
     # Caso o arquivo de texto com o token do QR Code ainda não exista no servidor
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
     if not os.path.exists(caminho_arquivo):
         return """
         <!DOCTYPE html>
@@ -50,7 +82,10 @@ async def get_qr_code():
                     h2 { color: #222; margin-bottom: 5px; }
                 </style>
                 <script>
+<<<<<<< HEAD
+=======
                     // Tenta recarregar a página a cada 4 segundos até o bot.js gerar o token
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
                     setTimeout(function() { location.reload(); }, 4000);
                 </script>
             </head>
@@ -64,6 +99,15 @@ async def get_qr_code():
             </body>
         </html>
         """
+<<<<<<< HEAD
+
+    with open(caminho_arquivo, "r", encoding="utf-8") as f:
+        qr_data = f.read().strip()
+
+    if not qr_data:
+        return "<script>setTimeout(function() { location.reload(); }, 2000);</script><p>A carregar dados do token...</p>"
+
+=======
         
     # Lê o token bruto do QR Code gerado pelo bot.js
     with open(caminho_arquivo, "r") as f:
@@ -74,6 +118,7 @@ async def get_qr_code():
         return "<script>setTimeout(function() { location.reload(); }, 2000);</script><p>A carregar dados do token...</p>"
         
     # Retorna o HTML injetando a biblioteca qrcode.js diretamente via CDN para desenhar o QR de forma nativa
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
     return f"""
     <!DOCTYPE html>
     <html>
@@ -95,6 +140,14 @@ async def get_qr_code():
             <div class="container">
                 <h2>M GRUPO</h2>
                 <h3>Inteligência Comercial & Automação</h3>
+<<<<<<< HEAD
+                <div class="alert">Aparelho pronto para emparelhamento</div>
+                <p>Abra o WhatsApp no seu telemóvel, aceda a <b>Aparelhos Conectados</b>, clique em <b>Conectar um aparelho</b> e escaneie o código abaixo:</p>
+                <div id="qrcode"></div>
+                <p style="color: #777; font-size: 12px; margin-top: 25px;">A página se auto-renovará para evitar códigos expirados.</p>
+            </div>
+            <script>
+=======
                 
                 <div class="alert">Aparelho pronto para emparelhamento</div>
                 
@@ -107,6 +160,7 @@ async def get_qr_code():
             
             <script>
                 // Instancia o gerador nativo passando o token extraído do arquivo
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
                 new QRCode(document.getElementById("qrcode"), {{
                     text: "{qr_data}",
                     width: 260,
@@ -115,13 +169,18 @@ async def get_qr_code():
                     colorLight : "#ffffff",
                     correctLevel : QRCode.CorrectLevel.H
                 }});
+<<<<<<< HEAD
+=======
                 
                 // Força a atualização do ecrã a cada 20 segundos para sincronizar novos tokens do bot.js
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
                 setTimeout(function() {{ location.reload(); }}, 20000);
             </script>
         </body>
     </html>
     """
+<<<<<<< HEAD
+=======
 =======
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
@@ -247,3 +306,4 @@ async def get_qr_code():
     </html>
     """
 >>>>>>> 46a1e68c1b6c9b595d928ccd6a232bd6096b731c
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
