@@ -2,10 +2,13 @@
   "name": "robo-zap",
   "version": "1.0.0",
   "main": "bot.js",
+<<<<<<< HEAD
   "scripts": {
     "start": "node bot.js",
     "start:api": "uvicorn main:app --reload"
   },
+=======
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
   "dependencies": {
     "whatsapp-web.js": "^1.23.0",
     "qrcode-terminal": "^0.12.0"

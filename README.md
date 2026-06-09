@@ -14,6 +14,7 @@
 
 ---
 
+<<<<<<< HEAD
 ## 🏗️ Arquitetura Local no PC
 
 O projeto agora roda diretamente no seu PC local com dois processos independentes: o backend em Python e o bot de automação em Node.js. A comunicação entre eles ocorre via `localhost` e não depende de containerização.
@@ -21,28 +22,53 @@ O projeto agora roda diretamente no seu PC local com dois processos independente
 ### ⚙️ Funcionamento Concorrente
 
 O sistema é executado em dois processos locais que podem ser iniciados em terminais separados:
+=======
+## 🏗️ Arquitetura Híbrida do Projeto
+
+O sistema adota uma abordagem **Side-by-Side (Lado a Lado)** encapsulada em um único container Docker. Esse ecossistema garante isolamento completo de processos, latência zero na comunicação interna e otimização máxima dos recursos computacionais em nuvem.
+
+### ⚙️ Funcionamento Concorrente
+
+Em vez de fragmentar a infraestrutura em múltiplas instâncias, o container gerencia dois motores independentes que rodam de forma síncrona:
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 
 ---
 
 ### 💻 **<font size="4">⚡ Engine Backend (FastAPI)</font>**
 * **Responsabilidade:** Exposição de endpoints REST, processamento de payloads, gerenciamento das regras de negócio e gateway estável de dados.
+<<<<<<< HEAD
 * **Ambiente:** Python 3.11.
+=======
+* **Ambiente:** Python 3.11 Slim.
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 
 ---
 
 ### 🤖 **<font size="4">⚙️ Engine de Automação (WWebJS)</font>**
 * **Responsabilidade:** Controle do ciclo de vida do cliente WhatsApp, escuta ativa de eventos em tempo real e injeção automatizada de mensagens.
+<<<<<<< HEAD
 * **Ambiente:** Node.js v18+.
+=======
+* **Ambiente:** Node.js v18.
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 
 ---
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
+<<<<<<< HEAD
 │                        PC LOCAL                          │
 │                                                          │
 │  ┌────────────────────────┐    ┌──────────────────────┐  │
 │  │      API FASTAPI       │    │   BOT ASSISTENTE     │  │
 │  │      (Python 3.11)     │◄──►│    (Node.js v18+)     │  │
+=======
+│                     CONTAINER DOCKER                     │
+│                                                          │
+│  ┌────────────────────────┐    ┌──────────────────────┐  │
+│  │      API FASTAPI       │    │   BOT ASSISTENTE     │  │
+│  │      (Python 3.11)     │◄──►│    (Node.js v18)     │  │
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 │  └───────────┬────────────┘    └──────────┬───────────┘  │
 └──────────────┼────────────────────────────┼──────────────┘
                ▼                            ▼
@@ -65,9 +91,15 @@ O sistema é executado em dois processos locais que podem ser iniciados em termi
 | Camada | Tecnologia | Função Principal |
 | --- | --- | --- |
 | **Backend** | Python 3.11 / FastAPI / Uvicorn | API assíncrona para monitoramento e rotas de controle. |
+<<<<<<< HEAD
 | **Automação** | Node.js v18+ / WhatsApp-Web.js | Core do bot e manipulação do Puppeteer em modo Headless. |
 | **Infraestrutura** | Ambiente local / Windows ou Linux | Execução do bot e da API diretamente no PC. |
 | **Cloud** | Opcional | Deploy remoto opcional se desejar usar serviços como Render. |
+=======
+| **Automação** | Node.js v18 / WhatsApp-Web.js | Core do bot e manipulação do Puppeteer em modo Headless. |
+| **Infraestrutura** | Docker / Debian Slim Environment | Containerização estável e isolamento de dependências. |
+| **Cloud** | Render Web Services | Hospedagem em nuvem com esteira de deploy automático. |
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 
 ### 🛠️ Funcionalidades Implementadas
 
@@ -105,11 +137,16 @@ O **M GRUPO** atua com excelência e rigor técnico entregando soluções comple
 
 ## 🚀 Instalação e Execução Local
 
+<<<<<<< HEAD
 Agora o projeto roda diretamente no seu PC local. Siga os passos abaixo para iniciar o bot e a API sem usar Docker.
+=======
+Siga os passos abaixo sequencialmente para rodar o ambiente de desenvolvimento:
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 
 ### 1. Clonar o Repositório
 
 ```bash
+<<<<<<< HEAD
 git clone https://github.com/marcio-dev-fullstack/ROBO-ZAP.git
 cd ROBO-ZAP
 ```
@@ -265,6 +302,44 @@ Se preferir um arquivo com caminhos Windows já preenchidos (ajuste se necessár
 
 ```powershell
 pm2 start ecosystem.config.windows.json
+=======
+git clone [https://github.com/marcio-dev-fullstack/Bot.git](https://github.com/marcio-dev-fullstack/Bot.git)
+cd Bot
+
+```
+
+### 2. Configurar os Ambientes e Dependências
+
+Instale os pacotes necessários tanto para a runtime do Node.js quanto para o ecossistema Python:
+
+```bash
+# Instala dependências do ecossistema JavaScript
+npm install
+
+# Instala dependências do ecossistema Python
+pip install -r requirements.txt
+
+```
+
+### 3. Inicialização dos Serviços
+
+Abra dois terminais no seu VS Code para rodar os serviços concorrentes de forma independente:
+
+* **Terminal 1 (Assistente WhatsApp):**
+```bash
+node bot.js
+
+```
+
+
+> 💡 **Nota:** Escaneie o QR Code gerado diretamente no terminal para autenticar o aparelho corporativo.
+
+
+* **Terminal 2 (API Backend):**
+```bash
+uvicorn main:app --reload
+
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 ```
 
 
@@ -283,7 +358,11 @@ O blueprint de build executa as seguintes etapas sequenciais na nuvem durante o 
 
 1. **Base OS:** Provisiona o ambiente oficial isolado `Python 3.11 Slim`.
 2. **Browsers:** Injeta as dependências estáveis e bibliotecas do Chromium moderno (`Debian Trixie`).
+<<<<<<< HEAD
 3. **Runtimes:** Instala a runtime do `Node.js v18+` de forma independente.
+=======
+3. **Runtimes:** Instala a runtime do `Node.js v18` de forma independente.
+>>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 4. **Packages:** Instala e sincroniza os pacotes via `NPM` e Python `PIP`.
 5. **Auth:** Importa o token da sessão local estável para evitar novas leituras de QR Code.
 6. **Engine:** Inicializa os serviços concorrentes, rodando a API FastAPI e o Bot lado a lado.
