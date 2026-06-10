@@ -35,8 +35,6 @@ Em vez de fragmentar a infraestrutura em múltiplas instâncias, o container ger
 ### 💻 **<font size="4">⚡ Engine Backend (FastAPI)</font>**
 * **Responsabilidade:** Exposição de endpoints REST, processamento de payloads, gerenciamento das regras de negócio e gateway estável de dados.
 
-* **Ambiente:** Python 3.11.
-
 * **Ambiente:** Python 3.11 Slim.
 
 ---
@@ -44,10 +42,7 @@ Em vez de fragmentar a infraestrutura em múltiplas instâncias, o container ger
 ### 🤖 **<font size="4">⚙️ Engine de Automação (WWebJS)</font>**
 * **Responsabilidade:** Controle do ciclo de vida do cliente WhatsApp, escuta ativa de eventos em tempo real e injeção automatizada de mensagens.
 
-* **Ambiente:** Node.js v18+.
-=======
 * **Ambiente:** Node.js v18.
-
 
 ---
 
