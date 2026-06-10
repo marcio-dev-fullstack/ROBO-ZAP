@@ -1,10 +1,3 @@
-<<<<<<< HEAD
 fastapi
-=======
-<<<<<<< HEAD
-fastapi
-=======
-fastapi
->>>>>>> 46a1e68c1b6c9b595d928ccd6a232bd6096b731c
->>>>>>> d5065d422adbf6aea6830d3809a463e1f8bfc848
 uvicorn
+httpx
