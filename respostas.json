@@ -1,0 +1,28 @@
+[
+  {
+    "keyword": "engenharia",
+    "reply": "Olá! Para saber mais sobre nossos serviços de engenharia, acesse: https://mgrupo.online/KM-Projetos/index.html"
+  },
+  {
+    "keyword": "orçamento",
+    "reply": "Para solicitar um orçamento, por favor, preencha nosso formulário neste link: [seu-link-de-orçamento]"
+  },
+  {
+    "keyword": "contato",
+    "reply": "Nosso número de contato é (XX) XXXX-XXXX. Em que mais posso ajudar?"
+  },
+  {
+    "keyword": "bom dia",
+    "reply": "Bom dia! Como posso te ajudar hoje?"
+  },
+  {
+    "keyword": "catalogo",
+    "reply": "Claro! Aqui está nosso catálogo de serviços.",
+    "media": "./media/catalogo.pdf"
+  },
+  {
+    "keyword": "logo",
+    "reply": "Esta é a nossa logo oficial.",
+    "media": "./media/logo.png"
+  }
+]
